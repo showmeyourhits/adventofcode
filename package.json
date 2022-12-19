@@ -1,0 +1,17 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "Solutions of Advent Of Code",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "advent",
+    "of",
+    "code"
+  ],
+  "author": "sasha ozhigin",
+  "license": "ISC"
+}
