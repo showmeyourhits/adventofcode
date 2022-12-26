@@ -11,7 +11,7 @@
     },
     {
       "type": "shell",
-      "command": "node ${workspaceFolder}/src/2022/${input:taskNumber}/solution.js",
+      "command": "npx ts-node-esm ${workspaceFolder}/src/2022/${input:taskNumber}/solution.ts",
       "label": "Run solution",
       "problemMatcher": []
     }
