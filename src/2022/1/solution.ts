@@ -48,10 +48,7 @@ function createTop3Piedestal() {
     sum() {
       return p[0] + p[1] + p[2];
     },
-    /**
-     * @param {number} calories
-     */
-    place(calories) {
+    place(calories: number) {
       if (p[0] < calories) {
         p[0] = calories;
       }
