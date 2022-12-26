@@ -19,3 +19,7 @@ Read pairs by line and compare borders.
 
 Create Stack class, that will handle stacks state and accepts commands.
 First parse the Stack state, then read commands line by line.
+
+## day 6 
+
+Create a "sliding window" to iterate over string. On each iteration create a Set and check it's length.
