@@ -23,3 +23,7 @@ First parse the Stack state, then read commands line by line.
 ## day 6 
 
 Create a "sliding window" to iterate over string. On each iteration create a Set and check it's length.
+
+## day 7
+
+Save folders sizes in one single object and use a stack to add size to upper directories. Probably graph structure should be used.
