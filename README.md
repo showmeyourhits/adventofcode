@@ -35,3 +35,7 @@ Read whole grid in memory. "Look" at grid from all sides, marking and counting "
 ## day 9
 
 Create grid of abstract size (BIG). Then just move tail where head was.
+
+## day 10
+
+Create grid and simple cycle. Use % division, to determine position on CRT from current tick.
