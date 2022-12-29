@@ -31,3 +31,7 @@ Save folders sizes in one single object and use a stack to add size to upper dir
 ## day 8
 
 Read whole grid in memory. "Look" at grid from all sides, marking and counting "visible" trees.
+
+## day 9
+
+Create grid of abstract size (BIG). Then just move tail where head was.

@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/src/2022/7/solution.ts",
+      "program": "${workspaceFolder}/src/2022/9/solution.ts",
       "runtimeArgs": [
         "--loader=ts-node/esm"
       ],

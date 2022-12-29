@@ -17,6 +17,6 @@
     }
   ],
   "inputs": [
-    {"id": "taskNumber","type": "promptString", "description": "Task number", "default": "1" }
+    {"id": "taskNumber","type": "promptString", "description": "Task number", "default": "10" }
   ]
 }
