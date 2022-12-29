@@ -27,3 +27,7 @@ Create a "sliding window" to iterate over string. On each iteration create a Set
 ## day 7
 
 Save folders sizes in one single object and use a stack to add size to upper directories. Probably graph structure should be used.
+
+## day 8
+
+Read whole grid in memory. "Look" at grid from all sides, marking and counting "visible" trees.
