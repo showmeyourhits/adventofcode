@@ -43,3 +43,8 @@ Create grid and simple cycle. Use % division, to determine position on CRT from 
 ## day 11
 
 Really monkey business. Cycles and structures. Add two new lines to end of input, to simplify parsing by `readline`. Use module division, since all tests use prime numbers.
+
+## day 12
+
+Path finding. Find length of shortest path from S to E. Time to roll out Dijkstra. 
+Start looking from destination, to find nearest start.
