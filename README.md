@@ -52,3 +52,7 @@ Start looking from destination, to find nearest start.
 ## day 13
 
 Use recursive strategy to compare lists. 
+
+## day 14
+
+Fucking sand. It coarse and it gets everywhere.
