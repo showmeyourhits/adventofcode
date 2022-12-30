@@ -39,3 +39,7 @@ Create grid of abstract size (BIG). Then just move tail where head was.
 ## day 10
 
 Create grid and simple cycle. Use % division, to determine position on CRT from current tick.
+
+## day 11
+
+Really monkey business. Cycles and structures. Add two new lines to end of input, to simplify parsing by `readline`. Use module division, since all tests use prime numbers.
