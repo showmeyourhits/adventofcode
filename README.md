@@ -48,3 +48,7 @@ Really monkey business. Cycles and structures. Add two new lines to end of input
 
 Path finding. Find length of shortest path from S to E. Time to roll out Dijkstra. 
 Start looking from destination, to find nearest start.
+
+## day 13
+
+Use recursive strategy to compare lists. 
