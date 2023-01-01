@@ -56,3 +56,7 @@ Use recursive strategy to compare lists.
 ## day 14
 
 Fucking sand. It coarse and it gets everywhere.
+
+## day 15
+
+Find coverage intervals for each line. Use interval merging algoritm to find gap with beacon.
