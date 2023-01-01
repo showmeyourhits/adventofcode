@@ -60,3 +60,7 @@ Fucking sand. It coarse and it gets everywhere.
 ## day 15
 
 Find coverage intervals for each line. Use interval merging algoritm to find gap with beacon.
+
+## day 16
+
+Dynamic programming problem. Build graph of connected valves. Finds distances with WFI algorithm (new find), then iterate over combinations of not empty valves. 
