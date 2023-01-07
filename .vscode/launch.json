@@ -11,9 +11,10 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/src/2022/16/solution.ts",
+      "program": "${workspaceFolder}/src/2022/17/solution.ts",
       "runtimeArgs": [
-        "--loader=ts-node/esm"
+        "--loader=ts-node/esm",
+        "--max-old-space-size=4096"
       ],
       "outFiles": [
         "${workspaceFolder}/**/*.js"

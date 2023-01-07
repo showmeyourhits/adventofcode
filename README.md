@@ -64,3 +64,7 @@ Find coverage intervals for each line. Use interval merging algoritm to find gap
 ## day 16
 
 Dynamic programming problem. Build graph of connected valves. Finds distances with WFI algorithm (new find), then iterate over combinations of not empty valves. 
+
+## day 17
+
+Tetris. Tip to right side to be able to add height more easily. Add fuckload of memory and cut height to make it work for 1 trillion.
