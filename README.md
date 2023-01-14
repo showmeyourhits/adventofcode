@@ -68,3 +68,7 @@ Dynamic programming problem. Build graph of connected valves. Finds distances wi
 ## day 17
 
 Tetris. Tip to right side to be able to add height more easily. Add fuckload of memory and cut height to make it work for 1 trillion.
+
+## day 18
+
+Create a N-sized 3-dimentional grid. "Flood fill" free space to find number of free sides.
