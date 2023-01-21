@@ -72,3 +72,7 @@ Tetris. Tip to right side to be able to add height more easily. Add fuckload of 
 ## day 18
 
 Create a N-sized 3-dimentional grid. "Flood fill" free space to find number of free sides.
+
+## day 19
+
+Use DFS to find the best combination of creating robots or waiting for the pass.
