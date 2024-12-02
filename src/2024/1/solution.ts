@@ -1,11 +1,8 @@
-import fs from "node:fs";
 import path from "node:path";
-import readline from "node:readline";
 
 import { solveInput } from "../../util/input.js";
 
 const IS_DEBUG = false;
-const 
 
 const lists: {
   first: number[];
@@ -23,14 +20,10 @@ solveInput({
     lists.second.push(second);
   },
   onEnd() {
-    lists.first.sort((a, b) => a - b);
-    lists.second.sort((a, b) => a - b);
+    const result = lists.first.reduce((acc, first) => {
+      const entriesCount = countEntries(lists.second, first);
 
-    const result = lists.first.reduce((acc, first, index) => {
-      const second = lists.second[index];
-      const [a, b] = [first, second].sort((a, b) => a - b);
-
-      return Math.abs(a - b) + acc;
+      return acc + entriesCount * first;
     }, 0);
 
     console.log(result);
@@ -40,3 +33,7 @@ solveInput({
     IS_DEBUG ? "input_example.txt" : "input.txt"
   ),
 });
+
+function countEntries(array: number[], value: number) {
+  return array.reduce((acc, item) => (item === value ? acc + 1 : acc), 0);
+}
