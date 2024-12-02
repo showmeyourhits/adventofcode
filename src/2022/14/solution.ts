@@ -1,5 +1,5 @@
 import path from "node:path";
-import { solveInput } from "../util/input.js";
+import { solveInput } from "../../util/input.js";
 
 type Coords = [number, number];
 type Grid = string[][];

@@ -1,5 +1,5 @@
 import path from "node:path";
-import { solveInput } from "../util/input.js";
+import { solveInput } from "../../util/input.js";
 const isExample = false;
 
 type Distances = Record<string, Record<string, number>>;

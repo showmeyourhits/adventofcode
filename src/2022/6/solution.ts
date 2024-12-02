@@ -1,5 +1,5 @@
 import path from "node:path";
-import { solveInput } from "../util/input.js";
+import { solveInput } from "../../util/input.js";
 
 function findSymbolIndex(markerLength: number, line: string): number {
   for (let i = markerLength - 1; i < line.length; i++) {

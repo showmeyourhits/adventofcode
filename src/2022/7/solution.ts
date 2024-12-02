@@ -1,5 +1,5 @@
 import path from "node:path";
-import { solveInput } from "../util/input.js";
+import { solveInput } from "../../util/input.js";
 
 const folders: Record<string, number> = {};
 const foldersStack: string[] = [];

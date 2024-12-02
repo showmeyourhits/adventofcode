@@ -11,7 +11,7 @@
     },
     {
       "type": "shell",
-      "command": "node --loader=ts-node/esm ${workspaceFolder}/src/2022/${input:taskNumber}/solution.ts",
+      "command": "node --loader=ts-node/esm ${workspaceFolder}/src/2024/${input:taskNumber}/solution.ts",
       "label": "Run solution",
       "problemMatcher": []
     }
