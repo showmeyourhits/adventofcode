@@ -6,6 +6,10 @@
 
 Just gather both lists in two arrays. Iterate over them in both parts. This is performatively acceptable.
 
+### day 2
+
+Iterate over the list of numbers and compare them with each other in first part. In second part, when first "error" is encountered - remove this number, next number and previous number from the list and run check for each of the result arrays.
+
 # 2022
 ### day 1
 

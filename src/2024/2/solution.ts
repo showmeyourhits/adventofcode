@@ -11,8 +11,10 @@ solveInput({
   onInput(line) {
     const report = line.split(/\s+/).map(Number);
 
-    if (isReportSafe(report)) {
+    if (isReportSafe(report, 0)) {
       safeCount++;
+    } else {
+      console.log(report.join(" "));
     }
   },
   onEnd() {
@@ -29,7 +31,11 @@ solveInput({
  * - it is increasing or decreasing only
  * - the difference between each number is at most MAX_DIFF (inclusive) and at least MIN_DIFF
  */
-function isReportSafe(report: number[]): boolean {
+function isReportSafe(report: number[], errorsDampened = 0): boolean {
+  if (errorsDampened > 1) {
+    return false;
+  }
+
   const MIN_DIFF = 1;
   const MAX_DIFF = 3;
 
@@ -42,12 +48,36 @@ function isReportSafe(report: number[]): boolean {
     const isDiffValid =
       Math.abs(diff) >= MIN_DIFF && Math.abs(diff) <= MAX_DIFF;
 
-    if ((sign === newSign || Number.isNaN(sign)) && isDiffValid) {
+    const isSignValid = sign === newSign || Number.isNaN(sign);
+
+    if (isSignValid && isDiffValid) {
       sign = newSign;
       continue;
     }
 
-    return false;
+    if (!isSignValid && i === 1) {
+      const reportWithPrevSign = [...report];
+      reportWithPrevSign.splice(i - 1, 1);
+
+      const removeFirstAttempt = isReportSafe(
+        reportWithPrevSign,
+        errorsDampened + 1
+      );
+
+      if (removeFirstAttempt) {
+        return true;
+      }
+    }
+
+    const reportA = [...report];
+    reportA.splice(i, 1);
+    const reportB = [...report];
+    reportB.splice(i + 1, 1);
+
+    return (
+      isReportSafe(reportA, errorsDampened + 1) ||
+      isReportSafe(reportB, errorsDampened + 1)
+    );
   }
 
   return true;
