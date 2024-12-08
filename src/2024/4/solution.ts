@@ -15,7 +15,8 @@ solveInput({
     screen.push(screenLine);
   },
   onEnd() {
-    const { count } = countWords({ word: ["X", "M", "A", "S"], screen });
+    const { count } = countCrosswords({ word: ["M", "A", "S"], screen });
+
     console.log("Total: ", count);
   },
   pathToInputFile: path.resolve(
@@ -34,38 +35,6 @@ type Direction =
   | "downLeft"
   | "downRight";
 
-function countWords(params: { word: string[]; screen: string[][] }): {
-  count: number;
-} {
-  const { word, screen } = params;
-  let count = 0;
-
-  for (let i = 0; i < screen.length; i++) {
-    for (let j = 0; j < screen[i].length; j++) {
-      if (screen[i][j] === word[0]) {
-        const result = countWordsAtPosition({ word, screen, i, j });
-
-        count += result;
-      }
-    }
-  }
-
-  return {
-    count,
-  };
-}
-
-const directions: Direction[] = [
-  "up",
-  "down",
-  "left",
-  "right",
-  "upLeft",
-  "upRight",
-  "downLeft",
-  "downRight",
-];
-
 const directionDeltas: Record<Direction, [number, number]> = {
   up: [-1, 0],
   down: [1, 0],
@@ -77,46 +46,108 @@ const directionDeltas: Record<Direction, [number, number]> = {
   downRight: [1, 1],
 };
 
-function countWordsAtPosition(params: {
-  word: string[];
-  screen: string[][];
-  i: number;
-  j: number;
-}): number {
-  const { word, screen, i, j } = params;
+function countCrosswords(params: { word: string[]; screen: string[][] }): {
+  count: number;
+} {
+  const { word, screen } = params;
+  let count = 0;
 
-  return directions.reduce((count, direction) => {
-    if (checkWordInDirection({ screen, direction, word, i, j })) {
-      return count + 1;
-    }
-    return count;
-  }, 0);
-}
+  for (let i = 0; i < screen.length; i++) {
+    for (let j = 0; j < screen[i].length; j++) {
+      const result = hasCrosswordAtPosition({ word, screen, i, j });
 
-function checkWordInDirection(params: {
-  screen: string[][];
-  direction: Direction;
-  word: string[];
-  i: number;
-  j: number;
-}): boolean {
-  const { screen, i, j, word, direction } = params;
-  const [deltaI, deltaJ] = directionDeltas[direction];
-
-  for (let k = 0; k < params.word.length; k++) {
-    const newI = i + deltaI * k;
-    const newJ = j + deltaJ * k;
-
-    if (
-      newI < 0 ||
-      newI >= screen.length ||
-      newJ < 0 ||
-      newJ >= screen[newI].length ||
-      screen[newI][newJ] !== word[k]
-    ) {
-      return false;
+      count += result ? 1 : 0;
     }
   }
 
-  return true;
+  return {
+    count,
+  };
+}
+
+function hasCrosswordAtPosition(params: {
+  word: string[];
+  screen: string[][];
+  i: number;
+  j: number;
+}): boolean {
+  const { word, screen, i, j } = params;
+
+  const wordLength = word.length;
+  const wordHalfLength = Math.floor(wordLength / 2);
+
+  // Middle letter doesn't match
+  if (screen[i][j] !== word[wordHalfLength]) {
+    return false;
+  }
+
+  // Get diagonals on this position
+  const firstDiagonal = getWordInDirection({
+    screen,
+    i: i + wordHalfLength * directionDeltas.upLeft[0],
+    j: j + wordHalfLength * directionDeltas.upLeft[1],
+    direction: "downRight",
+    wordLength,
+  });
+
+  const secondDiagonal = getWordInDirection({
+    screen,
+    i: i + wordHalfLength * directionDeltas.upRight[0],
+    j: j + wordHalfLength * directionDeltas.upRight[1],
+    direction: "downLeft",
+    wordLength,
+  });
+
+  if (
+    firstDiagonal &&
+    secondDiagonal &&
+    areEqualInAnyOfBothWays(firstDiagonal, word) &&
+    areEqualInAnyOfBothWays(secondDiagonal, word)
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function getWordInDirection(params: {
+  screen: string[][];
+  i: number;
+  j: number;
+  direction: Direction;
+  wordLength: number;
+}): string[] | null {
+  const { screen, i, j, direction, wordLength } = params;
+  const [deltaI, deltaJ] = directionDeltas[direction];
+
+  const word: string[] = [];
+
+  for (let k = 0; k < wordLength; k++) {
+    const newI = i + k * deltaI;
+    const newJ = j + k * deltaJ;
+
+    if (screen[newI]?.[newJ] === undefined) {
+      return null;
+    }
+
+    word.push(screen[newI][newJ]);
+  }
+
+  return word;
+}
+
+function areEqualInAnyOfBothWays(wordA: string[], wordB: string[]) {
+  if (wordA.length !== wordB.length) {
+    return false;
+  }
+
+  if (wordA.join("") === wordB.join("")) {
+    return true;
+  }
+
+  if (wordA.reverse().join("") === wordB.join("")) {
+    return true;
+  }
+
+  return false;
 }

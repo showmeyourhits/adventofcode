@@ -14,6 +14,10 @@ Iterate over the list of numbers and compare them with each other in first part.
 
 Use regular expressions to parse the input. Then iterate over the lines and sum multiplies. On second step, consider `do` and `don`.
 
+### day 4
+
+Iterate over cells and directions and check for the presence of the word in first part. Do the same in second part, but with diagonals.
+
 # 2022
 ### day 1
 
