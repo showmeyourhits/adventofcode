@@ -3,10 +3,17 @@ import path from "node:path";
 import { solveInput } from "../../util/input.js";
 
 let totalResult = 0;
+let isEnabled = true;
 
 solveInput({
   onInput(line) {
-    totalResult += calculateMultiplies(line);
+    const result = calculateMultiplies({
+      line,
+      isEnabled,
+    });
+
+    totalResult += result.result;
+    isEnabled = result.isEnabled;
   },
   onEnd() {
     console.log("Total: ", totalResult);
@@ -17,10 +24,16 @@ solveInput({
   ),
 });
 
-// example: xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
+// xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))
 
-function calculateMultiplies(line: string): number {
-  const regexp = /mul\((\d+),(\d+)\)/g;
+function calculateMultiplies(params: { line: string; isEnabled: boolean }): {
+  result: number;
+  isEnabled: boolean;
+} {
+  let isEnabled = params.isEnabled;
+  const line = params.line;
+
+  const regexp = /mul\((\d+),(\d+)\)|do\(\)|don't\(\)/g;
 
   let result = 0;
 
@@ -28,10 +41,22 @@ function calculateMultiplies(line: string): number {
 
   while ((match = regexp.exec(line)) !== null) {
     const [matchValue, a, b] = match;
-    console.log({ matchValue });
 
-    result += Number(a) * Number(b);
+    if (matchValue === "do()") {
+      isEnabled = true;
+      continue;
+    } else if (matchValue === "don't()") {
+      isEnabled = false;
+      continue;
+    } else if (isEnabled) {
+      result += Number(a) * Number(b);
+    } else {
+      // console.log("Skipping", matchValue);
+    }
   }
 
-  return result;
+  return {
+    result,
+    isEnabled,
+  };
 }

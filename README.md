@@ -10,6 +10,10 @@ Just gather both lists in two arrays. Iterate over them in both parts. This is p
 
 Iterate over the list of numbers and compare them with each other in first part. In second part, when first "error" is encountered - remove this number, next number and previous number from the list and run check for each of the result arrays.
 
+### day 3
+
+Use regular expressions to parse the input. Then iterate over the lines and sum multiplies. On second step, consider `do` and `don`.
+
 # 2022
 ### day 1
 
